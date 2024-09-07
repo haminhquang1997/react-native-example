@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { Text, Img, Row } from 'react-quick-style-components';
-export default function ListData({isActive, stt, scorce, name, image}) {
+export default function ListData({isActive, stt, score, name, image}) {
     const backgroundColor = isActive ? '#fff' : "#7e60fe";
     const color = isActive ? '#000' : "#fff";
     return (
@@ -12,8 +12,8 @@ export default function ListData({isActive, stt, scorce, name, image}) {
             <Text style={[styles.paragraph, { color: color }]}>
                 {name}
             </Text>
-            <Text style={[styles.scorce, { color: color }]}>
-                {scorce}
+            <Text style={[styles.score, { color: color }]}>
+                {score}
             </Text>
         </Row>
     );
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         height: 50,
         width: 50,
     },
-    scorce: {
+    score: {
         flex: 8,
         textAlign: 'right',
         fontWeight: 'bold',

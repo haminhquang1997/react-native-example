@@ -11,10 +11,7 @@ export default function App() {
   const [isActive, setIsActive] = useState(Array(30).fill(false));
 
   const handlePress = (index) => {
-    let newIsActive = isActive.map((item, index_isActive) => {
-      return index_isActive === index;
-    })
-    setIsActive(newIsActive);
+    setIsActive(isActive.map((_, i) => i === index));
   };
   // Use a for loop to populate the array with elements
   elements = users.map((item, index) => {
@@ -25,7 +22,7 @@ export default function App() {
       <ListData
           isActive={isActive[index]}
           stt={index + 1}
-          scorce= {item.scorce}
+          score= {item.score}
           name={item.name}
           image = {item.image}
       >
