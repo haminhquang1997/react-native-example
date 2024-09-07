@@ -1,17 +1,13 @@
 import { SafeAreaView, StyleSheet, View} from 'react-native';
-import { useState, useEffect  } from 'react';
-// You can import supported modules from npm
-import { Card, DefaultTheme  } from 'react-native-paper';
-
-// or any files within the Snack
-import AssetExample from './components/AssetExample';
+import { useState } from 'react';
+import ListData from './components/ListData';
 import Footer from './components/Footer';
 import data from './data.js'
-import { Col, Button, Text, Img, Scroll } from 'react-quick-style-components';
+import { Col, Button, Text, Img, Scroll, Row } from 'react-quick-style-components';
 
 export default function App() {
-  const elements = [];
-  const [user, setUser] = useState(data);
+  let elements = [];
+  const [users, setUsers] = useState(data);
   const [isActive, setIsActive] = useState(Array(30).fill(false));
 
   const handlePress = (index) => {
@@ -22,41 +18,41 @@ export default function App() {
     setIsActive(newIsActive);
   };
   // Use a for loop to populate the array with elements
-  user.forEach((item, index) => {
-    elements.push(
-        <Col
-            key={index}
-            onPress={() => handlePress(index)}
-        >
-          <AssetExample
-              isActive={isActive[index]}
-              stt={index + 1}
-              scorce= {item.scorce}
-              name={item.name}
-              image = {item.image}
-          >
-          </AssetExample>
-        </Col >
-
-    );
+  elements = users.map((item, index) => {
+    return <Col
+        key={index}
+        onPress={() => handlePress(index)}
+    >
+      <ListData
+          isActive={isActive[index]}
+          stt={index + 1}
+          scorce= {item.scorce}
+          name={item.name}
+          image = {item.image}
+      >
+      </ListData>
+    </Col >
   })
 
   return (
       <SafeAreaView style={styles.container}>
-        <View style={styles.view}>
+        <Row style={styles.view}>
           <Button
               style={styles.button}
-              children = {<Img
-                  source={require('./assets/icons8-close-18.png')}
-                  style={styles.icon}
-              />}>
+          >
+            <Img
+                source={require('./assets/icons8-close-18.png')}
+                style={styles.icon}
+            />
           </Button>
-          <Text style={styles.paragraph} text="Scoreboard">
+          <Text style={styles.paragraph}>
+            Scoreboard
           </Text>
-        </View>
+        </Row>
         <Scroll
             style={styles.scroll_view}
-            children = {elements}>
+        >
+          {elements}
         </Scroll>
         <Footer>
         </Footer>

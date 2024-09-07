@@ -1,18 +1,21 @@
-import { View, StyleSheet } from 'react-native';
-import { Text, Img } from 'react-quick-style-components';
-export default function AssetExample({isActive, stt, scorce, name, image}) {
+import { StyleSheet } from 'react-native';
+import { Text, Img, Row } from 'react-quick-style-components';
+export default function ListData({isActive, stt, scorce, name, image}) {
     const backgroundColor = isActive ? '#fff' : "#7e60fe";
     const color = isActive ? '#000' : "#fff";
     return (
-        <View style={[styles.container, { backgroundColor: backgroundColor} ]}>
-            <Text style={[styles.paragraph, styles.stt, { color: color }]} text={stt}>
+        <Row style={[styles.container, { backgroundColor: backgroundColor} ]}>
+            <Text style={[styles.paragraph, styles.stt, { color: color }]}>
+                {stt}
             </Text>
             <Img style={styles.logo} source={require('../assets/icons8-dipper-pines-36.png')} />
-            <Text style={[styles.paragraph, { color: color }]} text={name}>
+            <Text style={[styles.paragraph, { color: color }]}>
+                {name}
             </Text>
-            <Text style={[styles.scorce, { color: color }]} text={scorce}>
+            <Text style={[styles.scorce, { color: color }]}>
+                {scorce}
             </Text>
-        </View>
+        </Row>
     );
 }
 

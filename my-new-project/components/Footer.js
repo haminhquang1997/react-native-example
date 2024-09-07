@@ -1,15 +1,14 @@
-import {View, StyleSheet, Image } from 'react-native';
-// import { Button } from 'react-native-paper';
-import { Button, Text } from 'react-quick-style-components';
+import {StyleSheet } from 'react-native';
+import { Button, Text, Row } from 'react-quick-style-components';
 export default function Footer() {
     return (
-        <View style={styles.container}>
+        <Row style={styles.container}>
             <Button
                 style={styles.button}
             >
-                <Text style={styles.text} children = "Next"></Text>
+                <Text style={styles.text}>Next</Text>
             </Button>
-        </View>
+        </Row>
     );
 }
 
