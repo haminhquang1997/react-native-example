@@ -1,4 +1,4 @@
-import { SafeAreaView, StyleSheet, View} from 'react-native';
+import { SafeAreaView, StyleSheet} from 'react-native';
 import { useState } from 'react';
 import ListData from './components/ListData';
 import Footer from './components/Footer';
@@ -11,9 +11,8 @@ export default function App() {
   const [isActive, setIsActive] = useState(Array(30).fill(false));
 
   const handlePress = (index) => {
-    const newIsActive = [...isActive];
-    newIsActive.forEach((item, j) => {
-      newIsActive[j] = j == index ? true : false;
+    let newIsActive = isActive.map((item, index_isActive) => {
+      return index_isActive === index;
     })
     setIsActive(newIsActive);
   };
